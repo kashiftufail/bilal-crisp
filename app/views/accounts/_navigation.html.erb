@@ -1,0 +1,10 @@
+<div id="vert_nav">
+  <ul>
+    <li><a href="/account">Summary</a></li>
+    <li><a href="/accounts/address_book">Address Book</a></li>
+    <li><a href="/payment_details/<%= current_user.payment_detail.nil?? "abc" : current_user.payment_detail.id  %>">Payment Details</a></li>
+    <li><a href="/accounts/order_history">Order History</a></li>
+    <li><a href="/accounts/loyalty_points">Loyalty Points</a></li>
+    <li><a href="/accounts/refer_a_friend">Refer a friend</a></li>
+  </ul>
+</div>

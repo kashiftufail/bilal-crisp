@@ -1,0 +1,28 @@
+<div id="content" class="order-history admin">
+<div id="content_c1">
+  <h1>ADDRESS BOOK</h1>
+  <%= render :partial => 'accounts/navigation'%>
+</div>
+
+    <div id="content_c2" >
+
+      <div>
+        <h2>DEFAULT ADDRESS</h2>
+        <%= "#{current_user.address1} " unless current_user.address1.blank? %>
+        <br/>
+        <%= "#{current_user.address2} " unless current_user.address2.blank? %>
+        <br/>
+        <%= "#{current_user.city}" unless current_user.city.blank? %>
+        <br/>
+        <%= current_user.post_code %></p>
+        <div id="accounts_back">
+        <%= link_to image_tag("/images/common/back_button.jpg"), account_path %>
+        <%= link_to(image_tag("common/change.jpg"), :controller => 'users', :action => 'edit', :id => current_user.id ) %>
+        </div>
+        </div>
+        <br class="clearfloat" />
+    </div>
+</div>
+
+<div id="my_account_peach_bar_wrapper" ></div>
+

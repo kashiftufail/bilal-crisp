@@ -1,0 +1,40 @@
+<div id="header">
+  <div id="header_c1">
+	  <%= link_to(image_tag("header/logo.jpg"), "/") %>
+  </div>
+
+  <div id="header_c2">
+    <div id="header_info">
+      <ul>
+        <% if logged_in? %>
+          <li id="user_controls"><%= link_to(image_tag("common/my-account.jpg"), account_path ) if logged_in? %></li>
+          <li id="user_details"><%= link_to(image_tag("common/logout.jpg"), logout_path ) %></li>
+          <li id="user_details_text">Logged in as: <strong><%= current_user.name %></strong></li>
+        <% else %>
+          <li id="signup_link"><%= link_to(image_tag("header/register-now.jpg"), signup_path ) %></li>
+          <li><%= link_to(image_tag("header/sign-in.jpg"), "#", { :id => "loginButton"} ) %></li>
+        <% end %>
+      </ul>
+
+      <br class="clearfloat" />
+    </div>
+
+    <div id="header_nav">
+      <ul>
+        <li><%= link_to("Home", "/") %></li>
+        <li><%= link_to("Price List", price_lists_path) %></li>
+        <li><%= link_to("Corporate", corporate_path, :class => (@highlighted.nil? ? nil : 'highlighted')) %></li>
+        <li><%= link_to("About", about_path) %></li>
+        <li><%= link_to("FAQ", faq_path) %></li>
+        <li><%= link_to("Blog", blog_path) %></li>
+        <li class="last"><%= link_to("Contact", contact_path) %></li>
+      </ul>
+      <!--
+      <div id="booking_a_collection"><%# link_to(image_tag("steps/book-a-collection.jpg", :id => "booking_button", :height => "29px"),new_booking_path) %></div>
+      -->
+      <br class="clearfloat" />
+		</div>
+  </div>
+
+  <br class="clearfloat" />
+</div>

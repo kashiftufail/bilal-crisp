@@ -1,0 +1,61 @@
+<div class="filter_form_field filter_date_range">
+  <form class="filter_form">
+    <label for="datepicker"><strong>Select Date:</strong></label><br />
+    <input type="text" class="datepicker2" style="width: 100px;" />
+  </form>
+</div>
+<br /><br />
+<table>
+
+  <tr> 
+    <th><h1>Collections</h1></th>
+    <th><h1>Deliveries</h1></th>
+  </tr>
+
+  <tr>
+    <td>
+
+      <table class="index_table left">
+        <tr>
+          <th <%= order_class("id") %>><%= order_header("id", "ORDER #") %></th>
+          <th <%= order_class("pickup_date") %>><%= order_header("pickup_date", %{ORDER DATE}) %> </th>
+          <th <%= order_class("status") %>><%= order_header("status", %{STATUS}) %></th>
+          <th <%= order_class("cost") %>><%= order_header("cost", %{COST}) %></th>
+        </tr>
+        <% status = {"Pending" => "warning", "Dispatched" => "ok"} %>
+        <% @collections.each do |booking| %>
+          <tr class="<%= cycle("odd", "even") -%>" data-link="<%= admin_order_management_path(booking) %>">
+            <td><%= booking.id %></td>
+            <td><%= booking.pickup_date %></td>
+            <%  status_class = status[booking.status] ? status[booking.status] : " error" %>
+            <td><%= content_tag(:span, booking.status, :class => "status #{status_class}") %></td>
+            <td><%= number_to_currency(booking.cost.to_f, :unit => "&pound;") %></td>
+          </tr>
+        <% end %>
+      </table>
+
+    </td>
+
+    <td>
+      <table class="index_table right">
+        <tr>
+          <th <%= order_class("id") %>><%= order_header("id", "ORDER #") %></th>
+          <th <%= order_class("deliver_date") %>><%= order_header("delivery_date", %{DELIVERY DATE}) %></th>
+          <th <%= order_class("status") %>><%= order_header("status", %{STATUS}) %></th>
+          <th <%= order_class("cost") %>><%= order_header("cost", %{COST}) %></th>
+        </tr>
+        <% status = {"Pending" => "warning", "Dispatched" => "ok"} %>
+        <% reset_cycle %>
+        <% @deliveries.each do |booking| %>
+          <tr class="<%= cycle("odd", "even") -%>" data-link="<%= admin_order_management_path(booking) %>">
+            <td><%= booking.id %></td>
+            <td><%= booking.delivery_date%></td>
+            <%  status_class = status[booking.status] ? status[booking.status] : " error" %>
+            <td><%= content_tag(:span, booking.status, :class => "status #{status_class}") %></td>
+            <td><%= number_to_currency(booking.cost_with_discount_and_surcharge, :unit => "&pound;") %></td>
+          </tr>
+        <% end %>
+      </table>
+    </td>
+  </tr>
+</table>

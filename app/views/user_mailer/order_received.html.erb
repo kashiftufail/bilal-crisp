@@ -1,0 +1,47 @@
+<p><a href="http://crisp.cumulus.ws"><img src="http://crisp.cumulus.ws/images/header/logo.jpg" alt="Logo"></a></p>
+<br/>
+<p>Hi <%= @user.first_name %></p>
+<br/>
+<p>We are writing to let you know that we have received your order at our processing facility and that one of our team members has gone through the contents of your order. </p>
+<br/>
+<p>The breakdown and cost of the order are displayed below:</p>
+<br/>
+<table border="1">
+      <tr>
+        <th scope="col">QUANTITY</th>
+        <th scope="col">DESCRIPTION</th>
+        <th scope="col">PRICE(£)</th>
+        <th scope="col">TOTAL(£)</th>
+      </tr>
+      <% @booking.items.each do |item| %>
+      <tr>
+        <td><%=  item.quantity %></td>
+        <td><%= item.name %></td>
+        <td><%= item.price %></td>
+        <td><%= item.total %></td>
+      </tr>
+      <% end %>
+      <tr>
+        <td colspan="3">Surcharge <%= number_to_percentage(@booking.surcharge) %></td>
+        <td colspan="3"><%= @booking.surcharge_amount %></td>
+      </tr>
+      <tr>
+        <td colspan="3">Discount </td>
+        <td colspan="3"><%= @booking.co_discount %></td>
+      </tr>
+      <tr>
+        <td colspan="3">Sub-total</td>
+        <td colspan="3"><%= @booking.cost_with_discount_and_surcharge %></td>
+      </tr>
+</table>
+<br/>
+<p>
+  We will now go ahead and clean/alter your garments and will notify you of when they are dispatched for delivery. 
+</p>
+<br/>
+<p>
+  Kind Regards
+</p>
+<p>Crisp Team</p>
+<br/>
+<p><a href="http://crisp.cumulus.ws"><img src="http://crisp.cumulus.ws/images/header/logo.jpg?1319001926" alt="Logo"></a></p>

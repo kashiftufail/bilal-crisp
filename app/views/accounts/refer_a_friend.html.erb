@@ -1,0 +1,24 @@
+<div id="content" class="order-history">
+<div id="content_c1">
+  <h1>REFER A FRIEND</h1>
+  <%= render :partial => 'accounts/navigation'%>
+</div>
+
+    <div id="content_c2" >
+      <div class="error"><%= flash[:error] %></div>
+      <p class="bold">Enter comma seperated list of email addresses of your friends.</p>
+      <%= form_tag :action => 'invite' do %>
+        <div class="txtarea">
+          <%= text_area_tag 'email_addresses', '', :cols => 30, :rows => 5, :id => "special_instructions" %>
+        </div>
+        <br class="clearfloat" />
+        <%= submit_tag 'Send Email' %>
+        <br class="clearfloat" />
+      <% end %>
+      <p id="accounts_back"><%= link_to image_tag("/images/common/back_button.jpg"), account_path %></p>
+    </div>
+
+</div>
+
+<div id="my_account_peach_bar_wrapper" ></div>
+

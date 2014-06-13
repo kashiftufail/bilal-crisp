@@ -1,0 +1,38 @@
+<!-- Main -->
+<div id="main">
+  <!-- Top Content -->
+  <div id="top-content">
+    <%= render 'navigation' %>
+    <!-- right col -->
+    <div class="right-col">
+      <h2>Shirt Only Plans <span>Pick a Plan &amp; Sign up. No Long Term Contracts</span></h2>
+      <!-- Packages -->
+      <div class="shirt-packages">
+        <div class="light">
+          <a href="<%= plan_signup_path('light') %>">
+            <img src="<%= image_path("btn-choose.png") %>" width="140" height="26" alt="image" />
+          </a>
+        </div>
+        <!-- Medium -->
+        <div class="medium">
+          <a href="<%= plan_signup_path('medium') %>">
+            <img src="<%= image_path("btn-choose2.png") %>" width="174" height="33" alt="image" />
+          </a>
+        </div>
+        <!-- Heavy -->
+        <div class="heavy">
+          <a href="<%= plan_signup_path('heavy') %>">
+            <img src="<%= image_path("btn-choose.png") %>" width="140" height="26" alt="image" />
+          </a>
+        </div>
+        <!-- Pay as you Go -->
+        <div class="pay-as-go">
+          <a href="<%= plan_signup_path('pay-as-go') %>">
+            <img src="<%= image_path("btn-choose.png") %>" width="140" height="26" alt="image" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'content_outer' %>

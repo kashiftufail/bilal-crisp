@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Crisp Dry Cleaning &amp; Laundry</title>
+<%= stylesheet_link_tag "screen" %>
+<%= stylesheet_link_tag 'fonts/museo500' %>
+<%= stylesheet_link_tag 'fonts/museo700' %>
+<%= stylesheet_link_tag 'fonts/myriadprosemiboldcondensed' %>
+<%= stylesheet_link_tag 'datePicker' %>
+<%= javascript_include_tag "jquery" %>
+<%= javascript_include_tag 'admin' %>
+<%= stylesheet_link_tag 'smoothness/jquery-ui-1.8.16.custom' %>
+<%= javascript_include_tag "jquery-ui-1.8.16.custom.min" %>
+<%= javascript_include_tag 'bookings.js' %>
+<%= render :partial => 'shared/hide_booking_button' %>
+
+<script type="text/javascript" language="javascript" charset="utf-8" src="/javascripts/login.js"></script>
+<!--[if IE]>
+<link rel="stylesheet" media="all" type="text/css" href="/stylesheets/pro_dropline_ie.css" />
+<![endif]-->
+
+<!--  jquery core -->
+
+<!--  checkbox styling script -->
+<![if !IE 7]>
+
+<!--  styled select box script version 1 -->
+<%= javascript_include_tag "jquery.selectbox-0.5" %>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.styledselect').selectbox({ inputClass: "selectbox_styled" });
+});
+</script>
+ 
+
+<![endif]>
+
+<!--  styled select box script version 2 --> 
+<%= javascript_include_tag "jquery.selectbox-0.5_style_2" %>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.styledselect_form_1').selectbox({ inputClass: "styledselect_form_1" });
+	$('.styledselect_form_2').selectbox({ inputClass: "styledselect_form_2" });
+});
+</script>
+
+<!--  styled select box script version 3 --> 
+<%= javascript_include_tag "jquery.selectbox-0.5_style_2" %>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.styledselect_pages').selectbox({ inputClass: "styledselect_pages" });
+});
+</script>
+</head>
+<body id="admin"> 
+  <%= render :partial => 'admin/header'%>
+<!-- start content-outer ........................................................................................................................START -->
+<div id="content-outer">
+<!-- start content -->
+<div id="content">
+	<%= yield %>
+</div>
+<!--  end content -->
+<div class="clear">&nbsp;</div>
+</div>
+<!--  end content-outer........................................................END -->
+</body>
+</html>

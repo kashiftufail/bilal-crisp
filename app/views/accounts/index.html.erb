@@ -1,0 +1,38 @@
+<div id="content" >
+<div id="content_c1">
+  <h1>MY ACCOUNT</h1>
+  <%= render :partial => 'accounts/navigation'%>
+</div>
+
+    <div id="content_c2" >
+      <p class="right prominent">Loyalty Points Earned: <%= current_user.total_cost.to_i %></p>
+
+      <%= render :partial => 'shared/order_details' %>
+
+      <div id="my_account_c1">
+        <h2>DEFAULT DELIVERY METHOD</h2>
+        <p class="bold"><%= current_user.address1 %><br /><%= current_user.address2 %><br /><%= current_user.city %><br /><%= current_user.post_code %></p>
+        <%= link_to(image_tag("common/change.jpg"), :controller => 'users', :action => 'edit', :id => current_user.id ) %>
+        </div>
+
+        <div id="my_account_c2">
+        <h2>PAYMENT METHOD</h2>
+        <p class="bold">
+        <%= current_user.payment_detail.card_type if current_user.payment_detail %>
+        <%= "GoCardless" if current_user.pre_authorization %>
+        </p>
+        </div>
+
+        <div id="my_account_c3">
+        <h2>ACCOUNT SETTINGS</h2>
+        <p>Name: <strong><%= current_user.name %></strong><br />Email Address:<br /><strong><%= current_user.email %></strong></p>
+        <%= link_to(image_tag("common/change.jpg"), edit_path(current_user.id) ) %>
+        </div>
+
+        <br class="clearfloat" />
+    </div>
+
+</div>
+
+<div id="my_account_peach_bar_wrapper" ></div>
+

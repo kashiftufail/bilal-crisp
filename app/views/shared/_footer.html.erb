@@ -1,0 +1,77 @@
+<div id="footer_wrapper">
+  <div id="footer">
+    <div id="footer_r1">
+      <div id="footer_r1_c1">
+        <%= link_to(image_tag("footer/logo.jpg"), "/")%>
+      </div>
+
+      <div id="footer_r1_c2">
+        <div id="services_c1">
+          <h1>SERVICES</h1>
+
+          <ul>
+            <li><%= link_to("Dry Cleaning", price_lists_path)%></li>
+            <li><%= link_to("Ironing", price_lists_path)%></li>
+          </ul>
+        </div>
+
+        <div id="services_c2">
+          <ul>
+            <li><%= link_to("Laundry", price_lists_path)%></li>
+            <li><%= link_to("Alterations", price_lists_path)%></li>
+            <li><%= link_to("Shirt service", price_lists_path)%></li>
+            <li><%= link_to("Household", price_lists_path)%></li>
+          </ul>
+        </div>
+
+        <br class="clearfloat" />
+      </div>
+
+      <div id="footer_r1_c3">
+        <h1>FOLLOW US</h1>
+        <ul>
+          <li id="twitter"><a href="http://twitter.com/#!/crispcleaners" rel="external">TWITTER</a></li>
+          <li id="facebook"><a href="http://facebook.com/crispdrycleaning" rel="external">FACEBOOK</a></li>
+        </ul>
+      </div>
+
+      <div id="footer_r1_c4">
+        <h1>E-MAIL NEWSLETTER</h1>
+        <% if flash[:subscription_notice] %>
+        <a href="#subscription_notice" id="sub_link">  </a>
+          <p id="subscription_notice"><%= flash[:subscription_notice] %></p>
+        <% else %>
+          <p>Subscribe to our newsletter and get exclusive deals you won't find anywhere else straight to your inbox!</p>
+          <%= form_tag :controller => 'main', :action => 'subscribe_to_newsletter' do %>
+            <div id="email_newsletter">
+              <input id ="txt_newsletter" name="email" type="text" value="Enter your email address" onblur="if(this.value=='') this.value='Enter your email address';" onfocus="if(this.value=='Enter your email address') this.value='';" maxlength="40" />
+              <input id="btn_subscribe" type="submit" value="Subscribe" />
+
+              <br class="clearfloat" />
+            </div>
+				  <% end %>
+				<% end %>
+      </div>
+
+      <br class="clearfloat" />
+    </div>
+
+    <div id="footer_r2">
+      <div id="footer_r2_c1">
+        <p>www.crispcleaners.co.uk <%= Time.now.strftime("%Y") %> All Rights Reserved</p>
+      </div>
+
+      <div id="footer_r2_c2">
+        <ul>
+
+          <li><%= link_to("PRIVACY POLICY", :controller => 'main', :action => "privacy_policy")%></li>
+          <li><%= link_to("FAQ", faq_path)%></li>
+          <li><%= link_to("MEDIA", :controller => 'main', :action => "media")%></li>
+          <li><%= link_to("CONTACT", contact_path)%></li>
+        </ul>
+      </div>
+
+      <br class="clearfloat" />
+    </div>
+  </div>
+</div>

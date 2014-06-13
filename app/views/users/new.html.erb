@@ -1,0 +1,143 @@
+<% @user.password = @user.password_confirmation = nil %>
+<% content_for :head do %>
+  <%= javascript_include_tag 'jquery.jqtransform' %>
+  <script type="text/javascript" language="javascript" charset="utf-8" src="/javascripts/login.js"></script>
+  <%= stylesheet_link_tag 'login' %>
+  <%= stylesheet_link_tag 'jqtransform' %>
+<% end %>
+<div id="content">
+	<div id="content_c1">
+    <h1>REGISTER</h1>
+  </div>
+
+  <div id="content_c2">
+       <%= render :partial => 'shared/login' %>
+       <% unless @user.errors.blank? %>
+         <div id="errorExplanation" class="errorExplanation">
+            Please fill out the required fields below
+         </div>
+      <% end %>
+      <%= render :partial => 'users/errors' %>
+       
+      <%= form_for @user do |f| -%>
+        <% [:category, :name].each do |element| %>
+          <%= hidden_field_tag element, params[element].try(:underscore) %>
+        <% end %>
+          <div id="register">
+            <% unless @plan.nil? %>
+              <%= f.fields_for :user_company do |c| %>
+                <%= c.label :company, "Company *" %>
+                <div class="txtbox">
+                  <%= c.select :company_id, Company.scoped.map { |company| [company.name, company.id] }, :include_blank => "Select Company" %>
+                </div>
+                <br class="clearfloat" />
+              <% end %>
+            <% end %>
+
+            <%= f.label :title %>
+            <%= f.select :title, [["Mr","Mr"],["Mrs","Mrs"], ["Ms","Ms"]], :include_blank => "Choose One" %>
+            <br class="clearfloat" />
+
+
+            <%= f.label :first_name, "First Name *" %>
+            <div class="txtbox">
+                <%= f.text_field :first_name %>
+            </div>
+            <br class="clearfloat" />
+
+            <%= f.label :surname, "Surname *" %>
+            <div class="txtbox">
+            <%= f.text_field :surname %>
+            </div>
+            <br class="clearfloat" />
+
+            <%= f.label :address_first, "Address Line 1 *" %>
+            <div class="txtbox">
+            <%= f.text_field :address_first %>
+            </div>
+            <br class="clearfloat" />
+
+            <%= f.label :address_last, "Address Line 2" %>
+            <div class="txtbox">
+            <%= f.text_field :address_last %>
+            </div>
+            <br class="clearfloat" />
+
+            <%= f.label :city %>
+            <div class="txtbox">
+            <%= f.text_field :city %>
+            </div>
+            <br class="clearfloat" />
+
+            <%= f.label :post_code, "Post Code *" %>
+            <div class="txtbox sz88">
+            <%= f.text_field :post_code %>
+            </div>
+            <br class="clearfloat" />
+
+            <label for="user_home_number">Primary Number *<br /><span class="small">(This will be your Login Number)</span></label>
+            <div class="txtbox sz197">
+            <%= f.text_field :home_number %>
+            </div>
+            <br class="clearfloat" />
+
+            <label for="user_mobile_number">Mobile Number *<br /></label>
+            <div class="txtbox sz197">
+            <%= f.text_field :mobile_number %>
+            </div>
+            <br class="clearfloat" />
+
+            <%= f.label :email, "Email *" %>
+            <div class="txtbox">
+            <%= f.text_field :email %>
+            </div>
+            <br class="clearfloat" />
+
+            <%= f.label :password, "Password *" %>
+            <div class="txtbox sz197">
+            <%= f.password_field :password %>
+            </div>
+            <br class="clearfloat" />
+
+            <%= f.label :password_confirmation, 'Re-enter Password *' %>
+            <div class="txtbox sz197 last-field">
+            <%= f.password_field :password_confirmation %>
+            </div>
+
+            <%= f.hidden_field :ref_id, :value => params[:ref_id] || '' %>
+
+            <input id="next_step" type="image" src="/images/common/next-step.jpg" />
+
+<% end -%>
+
+            <br class="clearfloat" />
+        </div>
+      </form>
+  </div>
+
+  <br class="clearfloat" />
+</div>
+<br class="clearfloat" />
+
+<div id="peach_bar_wrapper">
+</div>
+<script type="text/javascript">
+  $(function() {
+    var callback = function(data) {
+      $('#user_address_first').val(data.company.address);
+      $('#user_city').val(data.company.city);
+      $('#user_post_code').val(data.company.postal_code);
+    };
+
+    $('.txtbox .jqTransformSelectWrapper ul li a').click(function(eventObject) {
+      var index = parseInt($(this).attr('index'), 10);
+      var option = $('#user_user_company_attributes_company_id option').get(index);
+      var company_id = $(option).val();
+      if(company_id.length) {
+        $.get('/companies/' + company_id, null, callback, 'json');
+      } else {
+        callback({company: {}});
+      }
+    });
+  });
+</script>

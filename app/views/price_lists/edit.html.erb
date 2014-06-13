@@ -1,0 +1,39 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'jquery.jqtransform' %>
+  <%= stylesheet_link_tag 'jqtransform' %>
+<% end %>
+<div id="content">
+  <div id="content_c1">
+    <h1>Edit Price List</h1>
+  </div>
+
+  <div id="content_c2" class='order-history'>
+    <%= form_for(@price_list, :url => { :action => 'update' }) do |f| %>
+      <%= f.error_messages %>
+
+        <%= f.label :item_name, "Item Name" %><br />
+        <div class="txtbox">
+          <%= f.text_field :item_name %>
+        </div>
+        <br class="clearfloat" />
+
+        <%= f.label :price %><br />
+        <div class="txtbox">
+          <%= f.text_field :price %>
+        </div>
+        <br class="clearfloat" />
+
+        
+
+        <%= f.label :price_list_category_id %><br />
+        <%= f.select :price_list_category_id, options_for_select(PriceListCategory.all.collect{|p| [p.name, p.id] }, @price_list.price_list_category_id)%>
+        <br class="clearfloat" />
+
+        <input id="next_step" type="image" src="/images/common/change.jpg" />
+    <% end %>
+    <br class="clearfloat" />    
+    <%= link_to 'Back', price_lists_path %>
+  </div>
+    
+
+</div>

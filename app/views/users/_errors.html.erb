@@ -1,0 +1,8 @@
+<div style="display:none;">
+<% @user.errors.each do |error, message | %>
+  <div class="user_error">  
+  <p><%= ["user", error].join("_") %></p>
+  <span><%= [error.to_s.titleize, message].join(" ") %></span>
+  </div>
+<% end %>
+</div>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  amount: MyString
+  source_id: 1
+  created_at_time: 2012-01-13 20:41:59
+  bill_id: 1
+  pre_user_id: 1
+  uri: MyString
+  pre_authorization: 
+
+two:
+  amount: MyString
+  source_id: 1
+  created_at_time: 2012-01-13 20:41:59
+  bill_id: 1
+  pre_user_id: 1
+  uri: MyString
+  pre_authorization: 

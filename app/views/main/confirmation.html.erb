@@ -1,0 +1,64 @@
+<% content_for :head do %>
+  <title>Crisp Dry Cleaning &amp; Laundry</title>
+<% end %> 
+<%= render :partial => 'shared/hide_booking_button' %>
+<div id="content">
+  <div id="content_c1">
+    <h1>CONFIRMATION</h1>
+  </div>
+  <div id="content_c2">
+    <p>Please confirm the booking details:</p>
+    <div id="booking_details" style="float:left;width:250px;margin-right:10px;">
+      <p><b>Address:</b> <%= @booking.user.full_address %></p>
+      <p><b>Pick Up Date:</b>	<%= @booking.pickup_date.strftime("%d/%m/%y") %></p>
+      <p><b>Pick Up Time:</b> 8 AM to 10 PM</p>
+      <p><b>Drop off Date:</b> <%= @booking.delivery_date.strftime("%d/%m/%y") %></p>
+      <p><b>Drop off Time:</b> 8 AM to 10 PM</p>
+      <p><b>Next Day Service:</b> <%= next_day_service(@booking) %></p>
+      <p><b>Code Used:</b> <%= @booking.discount_code %></p>
+    </div>
+    <div id="payment_details" style="float:left;">
+      <% if @payment_detail %>
+        <p><b>Payment to be taken from:</b></p>
+        <p>
+        <b>Card type:</b>
+        <%=h @payment_detail.card_type %>
+        </p>
+
+        <p>
+        <b>Issue date:</b>
+        <%=h @payment_detail.issue_date.strftime("%m/%y") %>
+        </p>
+
+        <p>
+        <b>Card holder name:</b>
+        <%=h @payment_detail.card_holder_name %>
+        </p>
+
+        <p>
+        <b>Card number:</b>
+        <%=h @payment_detail.credit_card_number %>
+        </p>
+
+        <p>
+        <b>Expiration date:</b>
+        <%=h @payment_detail.expiration_date.strftime("%m/%y") %>
+        </p>
+
+        <p>
+        <b>Security code:</b>
+        <%=h @payment_detail.security_code %>
+        </p>
+      <% else %>
+      <% end %>
+    </div>
+    <br class="clearfloat" />
+    <p id="confirmation_links">
+    <%= link_to(image_tag("common/back_button.jpg", :style => "margin:4px;"), :controller => 'payment_details', :action => 'edit', :id => current_user.payment_detail.id, :redirected => true) if @payment_detail %>
+    <a href="/bookings/discard"><img src="/images/common/disacard-button.jpg" /></a>
+    <a href="/bookings/confirmation"><input id="next_step" type="image" src="/images/common/confirm.jpg" /></a>
+    </p>
+
+  </div>
+
+</div>

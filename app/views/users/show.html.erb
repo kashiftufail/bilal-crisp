@@ -1,0 +1,49 @@
+<div id="content">
+  <div id="content_c1">
+    <h1>USER DETAILS</h1>
+  </div>
+  <div id="content_c2" class="admin user-details">
+    <p>
+      <b>Title:</b>
+      <%=h @user.title %>
+    </p>
+
+    <p>
+      <b>First name:</b>
+      <%=h @user.first_name %>
+    </p>
+
+    <p>
+      <b>Surname:</b>
+      <%=h @user.surname %>
+    </p>
+
+    <p>
+      <b>Address:</b>
+      <%=h @user.full_address %>
+    </p>
+
+    <p>
+      <b>Post code:</b>
+      <%=h @user.post_code %>
+    </p>
+
+    <p>
+      <b>Home number:</b>
+      <%=h @user.home_number %>
+    </p>
+
+    <p>
+      <b>Mobile number:</b>
+      <%=h @user.mobile_number %>
+    </p>
+
+    <p>
+      <b>Email:</b>
+      <%=h @user.email %>
+    </p>
+
+  </div>
+  <br class="clearfloat" >
+  <%= link_to 'Back', users_path %>
+</div>

@@ -1,0 +1,24 @@
+span paginate(@bookings)
+span paginate(@bookings)
+table_for @bookings, class: :index_table do
+  tr do
+    th "ORDER ID"
+    th "ORDER DATE"
+    th "ORDER DUE"
+    th "ITEMS"
+    th "STATUS"
+    th "COST"
+  end
+  status = {'Pending' => :error, 'Dispatched' => :ok}
+  @bookings.each do |booking|
+  tr do
+    td booking.id
+    td booking.pickup_date
+    td booking.delivery_date
+    td booking.items_count.to_i
+    td status_tag(booking.status, status[booking.status] ? status[booking.status] : :warning)
+    td number_to_currency(booking.cost.to_f, :unit => "&pound;")
+  end
+  end
+end
+span page_entries_info(@bookings).html_safe

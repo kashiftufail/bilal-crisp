@@ -1,0 +1,24 @@
+<table class="tbl">
+    <% unless @bookings.blank? %>
+      <tr>
+        <th scope="col" class="top_lt">ORDER #</th>
+        <th scope="col">ORDER DATE</th>
+        <th scope="col">ORDER DUE</th>
+        <th scope="col">ITEMS</th>
+        <th scope="col">STATUS</th>
+        <th scope="col" class="top_rt">COST</th>
+      </tr>
+      <% @bookings.each do |booking| %>
+      <tr>
+        <td>#<%= booking.id%></td>
+        <td><%= booking.pickup_date.strftime("%d %b, %Y") %></td>
+        <td><%= booking.delivery_date.strftime("%d %b, %Y") %></td>
+        <td><%= booking.items_count.to_i %></td>
+        <td><%= booking.status %></td>
+        <td>£<%= booking.cost %></td>
+      </tr>
+      <% end %>
+    <% else %>
+      You don't have any orders
+    <% end %>
+</table>

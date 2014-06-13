@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Crisp suit and shirt</title>
+    <!-- Stylesheet -->
+    <%= stylesheet_link_tag "style" %>
+    <%= javascript_include_tag "jquery-1.6.4.min", "corporate" %>
+  </head>
+  <body>
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <%= render 'corporate/header' %>
+      <%= yield %>
+      <%= render 'corporate/footer' %>
+    </div>
+  </body>
+</html>
+

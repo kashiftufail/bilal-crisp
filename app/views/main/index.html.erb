@@ -1,0 +1,80 @@
+<% content_for :head do %>
+  <%= render :partial => 'shared/hide_booking_button' %>
+  <title>Crisp Dry Cleaning & Laundry: London’s Online Dry Cleaning Collection & Delivery Service</title>
+  <meta name="title" content="Crisp Dry Cleaning & Laundry: London’s Online Dry Cleaning Collection & Delivery Service" />
+  <meta name="description" content="Crisp Dry Cleaning & Laundry are London's online Dry Cleaning Pick Up and Delivery Service. 48hr Serivce, Collect Loyalty Points and receive  Great Service & Convenience at your home/office!" />
+  <meta name="keywords" content="dry cleaners in london, laundry service, london dry cleaners, shirt service, shirt laundry,  alterations, household laundry , wash & fold service, dry cleaning delivery, dry cleaning at home, dry cleaning at office, dry cleaning pick up and delivery, cheap dry cleaning" />
+<% end %> 
+
+
+
+
+
+
+
+
+
+<div id="steps">
+  <div id="step1">
+    <h1>BOOK</h1>
+    <p>Book a collection</p>
+  </div>
+  <div id="step2">
+    <h1>COLLECT</h1>
+    <p>We will collect from your<br />home/office on the<br />specified date</p>
+  </div>
+
+  <div id="step3">
+    <h1>CLEAN</h1>
+    <p>We will clean all your<br />garments at our site</p>
+  </div>
+
+  <div id="step4">
+    <h1>DELIVER</h1>
+    <p>Deliver on the next round<br />of delivery (48 hour service)</p>
+  </div>
+
+  <br class="clearfloat" />
+
+  <div id="book_a_collection">
+
+    <%= link_to(image_tag("button.png"), "#")%>
+  </div>
+</div>
+
+<div id="peach_bar_wrapper">
+  <div id="peach_bar">
+    <div id="peach_bar_c1">
+      <h1>SERVICE AREA CHECKER</h1>
+      <div id="service_area_check">
+        <% if flash[:service_area_checker_notice] %>
+          <p id="service_area_checker_notice"><%= flash[:service_area_checker_notice] %></p>
+        <% else %>
+          <%= form_tag :action => 'service_area_checker' do %>
+            <input id ="txt_postcode" type="text" name="area_code" value="Enter your postcode" onblur="if(this.value=='') this.value='Enter your postcode';" onfocus="if(this.value=='Enter your postcode') this.value='';" maxlength="40" />
+
+            <input id="btn_go" type="submit" value="Go" />
+          <% end %>
+        <% end %>
+        <br class="clearfloat" />
+      </div>
+    </div>
+
+    <div id="peach_bar_c2">
+      <h1>FREE PICKUP<br />AND DELIVERY</h1>
+      <p>Minimum<br />order £10</p>
+    </div>
+
+    <div id="peach_bar_c3">
+      <h1>QUALITY &amp;<br />CONVENIENCE</h1>
+      <p>on your<br />doorstep</p>
+    </div>
+
+    <div id="peach_bar_c4">
+      <h1>COLLECT<br />LOYALTY POINTS</h1>
+      <p>redeem with money<br />off coupons</p>
+    </div>
+
+    <br class="clearfloat" />
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<div id="content">
+  <div id="content_c1">
+    <h1>ORDER DETAILS</h1>
+  </div>
+  <div id="content_c2" class="admin user-details">
+<br/>
+<p>
+  <b>Order #</b>
+  <%= @booking.id %>
+</p>
+
+<b>Ordered By:</b>
+<p><%=h @booking.user.name %></p>
+<p><%=h @booking.user.mobile_number %></p>
+
+<p>
+  <b>Pickup date:</b>
+  <%=h @booking.pickup_date.strftime("%d/%m/%y") %>
+</p>
+
+<p>
+  <b>Order Due:</b>
+  <%=h @booking.delivery_date.strftime("%d/%m/%y") %>
+</p>
+
+<p>
+  <b>Number of Items:</b>
+  <%= @booking.items.count %>
+</p>
+
+<p>
+  <b>Surcharge:</b>
+  <%=h @booking.surcharge %>
+</p>
+<p>
+  <b>Total Cost:</b>
+  <%=h @booking.cost.to_i %>
+</p>
+<p>
+  <b>Address: </b><%= detailed_address(@booking.user.full_address) %>
+<p>
+<br/>
+<h2>Payment Details</h2>
+<br/>
+<p>
+  <b>Card type:</b>
+  <%=h @payment_detail.card_type %>
+</p>
+
+<p>
+  <b>Card holder name:</b>
+  <%=h @payment_detail.card_holder_name %>
+</p>
+
+<p>
+  <b>Card number:</b>
+  <%=h @payment_detail.credit_card_number %>
+</p>
+
+<p>
+  <b>Issue date:</b>
+  <%=h @payment_detail.issue_date.strftime("%m/%y") %>
+</p>
+
+<p>
+  <b>Expiration date:</b>
+  <%=h @payment_detail.expiration_date.strftime("%m/%y") %>
+</p>
+
+<p>
+  <b>Security code:</b>
+  <%=h @payment_detail.security_code %>
+</p>
+<br class="clearfloat" />
+<%= link_to 'Back', bookings_path %>
+</div>
+</div>
+

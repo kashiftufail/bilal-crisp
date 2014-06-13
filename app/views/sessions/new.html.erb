@@ -1,0 +1,15 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'footer' %>
+<% end %>
+<div id="content">
+  <div id="content_c1">
+  <h1>LOGIN</h1>
+  </div>
+
+  <div id="content_c2">
+    <div id="register" class="login">
+      <%= render :partial => 'shared/login_form' %>
+    </div>
+  </div>
+</div>
+<div id="my_account_peach_bar_wrapper" ></div>

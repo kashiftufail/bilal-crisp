@@ -1,0 +1,35 @@
+<div id="content">
+    <div id="content_c1">
+        <h1>Post Codes LIST</h1>
+    </div>
+    <br/>
+    <div id="content_c2" class="admin">
+      <br class="clearfloat" />
+
+        <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
+            <% unless @area_codes.blank? %>
+              <tr>
+                <th class="table-header-repeat line-left minwidth-1"><a href="#">Post Code</a></th>
+                <th class="table-header-repeat line-left minwidth-1"><a href="#">Area Name</a></th>
+                <th class="table-header-repeat line-left minwidth-1"><a>ACTIONS</a></th>
+              </tr>
+              <% @area_codes.each do |ac| %>
+              <tr>
+                <td><%= ac.area_code %></td>
+                <td><%= ac.area_name %></td>
+                <td><%= link_to('', edit_area_code_path(ac), {:class => "icon-1 info-tooltip", :title => "Edit"})  %>
+                    <%= link_to '', ac, :confirm => 'Are you sure you want to Remove this area code?', :method => :delete, :class => "icon-2 info-tooltip", :title => "Remove" %>
+                </td>
+              </tr>
+            <% end %>
+            <% else %>
+              List Empty
+            <% end %>
+        </table>
+        <%= link_to 'New Post Code', new_area_code_path %>
+
+    </div>
+
+    <br class="clearfloat" />
+</div>
+

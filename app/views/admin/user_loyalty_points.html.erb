@@ -1,0 +1,13 @@
+<div id="content" class="order-history">
+<div id="content_c1">
+  <h1>Loyalty Points</h1>
+</div>
+
+    <div id="content_c2" >
+
+      <p class="prominent">Total Loyalty Points Earned: <%= current_user.loyalty_points %></p>
+      <p class="prominent">Loyalty Codes Consumed: <%= (current_user.loyalty_points/100) - current_user.discount_codes.loyalty_points.count %></p>
+      <p class="prominent">Unused Loyalty Codes: <%= current_user.discount_codes.loyalty_points.count %></p>
+      <%= link_to 'Back', admin_path %>
+  </div>
+</div>

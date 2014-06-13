@@ -1,0 +1,75 @@
+<!-- Main -->
+<div id="main">
+  <!-- Top Content -->
+  <div id="top-content">
+    <%= render 'navigation' %>
+    <!-- right col -->
+    <div class="right-col">
+      <h2>Suit &amp; Shirts Plans <span>Pick a Plan &amp; Sign up. No Long Term Contracts</span></h2> 
+      <!-- Packages -->
+      <div class="packages">
+        <div class="light">
+          <ul class="package-info">
+            <li class="pm"><strong class="per-month">£60</strong>per month</li>
+            <li class="hung">
+            <strong>4 Suits</strong>
+            <span>(Any 8 garments)</span>
+            <strong>20 shirts</strong>
+            <span>(Hung)</span>             
+            </li>
+            <li class="saving"><span>Monthly Saving = <strong>£10</strong></span>
+            <a href="<%= plan_signup_path('light') %>"><img src="<%= image_path('btn-choose.png') %>" width="140" height="26" alt="image" /></a>
+            </li>
+          </ul>
+        </div>
+        <!-- Medium -->
+        <div class="medium">
+          <ul class="package-info">
+            <li class="pm"><strong> £80</strong><span>per month</span></li>
+            <li class="hung">
+            <strong>6 suits</strong>
+            <span>(Any 12 garments)</span>
+            <strong>25 shirts</strong>
+            <span>(Hung)</span>             
+            </li>
+            <li class="saving"><span>Monthly Saving = <strong>£30</strong></span>
+            <a href="<%= plan_signup_path('medium') %>"><img src="<%= image_path('btn-choose2.png') %>" width="174" height="33" alt="image" /></a>
+            </li>
+          </ul>
+        </div>
+        <!-- Heavy -->
+        <div class="heavy">
+          <ul class="package-info">
+            <li class="pm"><strong class="per-month">£100</strong>per month</li>
+            <li class="hung">
+            <strong>8 Suits</strong>
+            <span>(Any 16 garments)</span>
+            <strong>30 shirts</strong>
+            <span>(Hung)</span>             
+            </li>
+            <li class="saving"><span>Monthly Saving = <strong>£40</strong></span>
+            <a href="<%= plan_signup_path('heavy') %>"><img src="<%= image_path('btn-choose.png') %>" width="140" height="26" alt="image" /></a>
+            </li>
+          </ul>
+        </div>
+        <!-- Pay as you Go -->
+        <div class="pay-as-go">
+          <ul class="package-info">
+            <li class="pm"><strong class="per-month">£0</strong>per month</li>
+            <li class="bill">
+            We will bill <br />
+            you individually <br />
+            for every order <br />
+            you make <br />
+            with us 
+            </li>
+            <li class="saving">
+            <a href="<%= plan_signup_path('pay_as_go') %>"><img src="<%= image_path('btn-choose.png') %>" width="140" height="26" alt="image" /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'content_outer' %>

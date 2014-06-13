@@ -1,0 +1,88 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'smoothness/jquery-ui-1.8.16.custom' %>
+  <%= javascript_include_tag "jquery-ui-1.8.16.custom.min" %>
+  <%= javascript_include_tag 'bookings.js' %>
+  <%= render :partial => 'shared/hide_booking_button' %>
+<% end %>
+
+<div id="content">
+<div id="content_c1">
+    <h1>BOOKING</h1>
+    <%= image_tag("common/booking.jpg") %>
+    <div id="area_post_code">
+        <%= form_tag({:controller => 'main', :action => 'service_area_checker'}, { :id => 'area_code_form' }) do %>
+            <div>
+                <input id ="txt_area_post_code" name="area_code" type="text" value="Enter Area Post Code..." onblur="if(this.value=='') this.value='Enter Area Post Code...';" onfocus="if(this.value=='Enter Area Post Code...') this.value='';" />                            
+                <input id="btn_area_post_code" type="submit" value="" />
+                <br class="clearfloat" />
+            </div>
+        <% end %>
+
+        <div class="alert">
+            <p class="small"></p>
+        </div>
+    </div>
+</div>
+<div id="content_c2">
+  <div id="booking">
+                  <%= form_for(@booking) do |f| %>
+                    <%= f.error_messages %>
+                    <p class="line"><span>Pick Up Date</span></p>
+                    <%= f.text_field :pickup_date, :value => formatted_booking_pickup_date, :id => 'pickup_date', :class => 'date' %>
+
+                    <p class="line"><span>Pick Up Time</span></p>
+                    <p class="bold">10 AM to 6 PM</p>
+
+                    <p class="line"><span>Delivery Date</span></p>
+                    <%= f.text_field :delivery_date, :id => 'delivery_date', :class => 'date' %>
+                    <span id="bnotice" style="display:none;">15% surcharge will be applied to the order cost.</span>
+                    <span id="time-notice" style="font-size:12px;display:none;"><p>Sorry our next day service is available for booking up to 9:00AM for a same day collection</p></span>
+                    <input type="hidden" id="check_value" value="0">
+                    <br class="clearfloat" />
+
+                    <p class="line"><span>Delivery Time</span></p>
+                    <p class="bold">10 AM to 6 PM</p>
+                    <%= check_box_tag "next_day_service", "" ,@booking.delivery_date && @booking.delivery_date < @booking.pickup_date + 2 %> Next Day Service (15% Surcharge)
+                    <br class="clearfloat" />
+                    <%= check_box_tag "discount", "", !@booking.discount_code.blank? %> Check here if you have a discount code
+                    <% unless @booking.discount_code.blank? %>
+                    <div id="discount_code" >
+                    <% else %>
+                      <div id="discount_code" style="display:none;">
+                    <% end %>
+                      <p class="line"><span>Discount Code</span></p>
+                      <div class="txtbox sz179" >
+                        <%= f.text_field :discount_code %>
+                      </div>
+                      <span id="code_result"></span>
+                    </div>
+                    <br class="clearfloat" />
+                    <br class="clearfloat" />
+                    <p>Please enter any special requests, comments for your order below. (i.e: shirts folded, starched, alterations etc...)</p>
+                    <div class="txtarea">
+                      <%= f.text_area :special_instructions, :id => 'special_instructions' %>
+                    </div>
+                    <br class="clearfloat" />
+
+                    <input id="next_step" type="image" src="/images/common/next-step.jpg" />
+
+                    <br class="clearfloat" />
+                </div>
+
+<% end %>
+<div id="booking_instructions" >
+  <p>Please Remember To:</p>
+  <ol>
+    <li>Place all your garments into a durable bag.</li>
+    <li>If you have items to be repaired/altered <br/>
+     place them into a separate bag with <br/>
+     a note attached indicating the work<br/>
+     that needs to be done.</li>
+    <li>Keep press only garments separate also.<br/>
+    Thank You!
+    </li>
+  </ol>
+</div>
+</div>
+</div>
+<br class="clearfloat" />

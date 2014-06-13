@@ -1,0 +1,24 @@
+<%= form_tag session_path, :id => "loginForm" do -%>
+  <label for="user_home_number">Number<br /><span class="login small">(This is your primary number)</span></label>
+  <div class="txtbox">
+    <%= text_field_tag 'home_number', @home_number %>
+  </div>
+  <br class="clearfloat" />
+  <%= label_tag 'password' %>
+  <div class="txtbox">
+    <%= password_field_tag 'password', nil %>
+  </div>
+  <%= hidden_field_tag 'admin', '1' %>
+  <br class="clearfloat" />
+
+  <%= hidden_field_tag 'redirected', params[:redirected] || false %>
+  <!-- Uncomment this if you want this functionality
+  <%= label_tag 'remember_me', 'Remember me' %>
+  <%= check_box_tag 'remember_me', '1', @remember_me %>
+  -->
+  <%= submit_tag 'Login', :id => 'login_submit' %>
+  <span id="login-error">
+    <%= flash[:error] %>
+  </span>
+<% end -%>
+

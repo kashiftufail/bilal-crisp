@@ -1,0 +1,28 @@
+<!-- Header -->
+<div id="header">
+  <!-- Logo -->
+  <h1 class="logo"><a href="<%= root_path %>">Crisp suit and shirt</a></h1>
+  <!-- Signin  -->
+  <% unless logged_in? %>
+    <ul class="sign-in">
+      <li><a href="<%= login_path %>"><span>Sign in</span></a></li>
+      <li><a class="reg"  href="<%= signup_path %>"><span>Register Now</span></a></li>
+    </ul>
+  <% else %>
+    <ul class="logged-in">
+      <li id="user_details_text">Logged in as: <strong><%= current_user.name %></strong></li>
+      <li id="user_details"><%= link_to(image_tag("common/logout.jpg"), logout_path ) %></li>
+      <li id="user_controls"><%= link_to(image_tag("common/my-account.jpg"), account_path ) if logged_in? %></li>
+    </ul>
+  <% end %>
+  <!-- Nav -->
+  <ul id="nav">
+    <li><a href="<%= root_path %>">Home</a></li>
+    <li><a href="<%= price_lists_path %>">Price List</a></li>
+    <li><a href="<%= corporate_path %>" class="highlighted">Corporate</a></li>
+    <li><a href="<%= about_path %>">About</a></li>
+    <li><a href="<%= faq_path %>">FAQ</a></li>
+    <li><a href="<%= blog_path %>">Blog</a></li>
+    <li><a href="<%= contact_path %>">Contact</a></li>
+  </ul>
+</div>

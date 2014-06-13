@@ -1,0 +1,94 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'jquery.jqtransform' %>
+  <%= stylesheet_link_tag 'jqtransform' %>
+<% end %>
+<div id="content">
+	<div id="content_c1">
+    <h1>USER DETAILS</h1>
+  </div>
+
+  <div id="content_c2">
+
+      <% unless @user.errors.blank? %>
+         <div id="errorExplanation" class="errorExplanation">
+            Please fill out the required fields below
+         </div>
+      <% end %>
+      <%= render :partial => 'users/errors' %>
+      <%= form_for @user do |f| -%>
+          <div id="register" class="edit-form">
+            <%= f.label :title %>
+            <%= f.select :title, [["Mr","Mr"],["Mrs","Mrs"], ["Ms","Ms"]], :include_blank => "Choose One" %>
+            <br class="clearfloat" />
+
+            <%= f.label :first_name, "First Name *" %>
+            <div class="txtbox">
+                <%= f.text_field :first_name %>
+            </div>
+            <br class="clearfloat" />
+
+            <%= f.label :surname, "Surname *" %>
+            <div class="txtbox">
+            <%= f.text_field :surname %>
+            </div>
+            <br class="clearfloat" />
+
+            <%= f.label :address_first, "Address Line 1 *" %>
+            <div class="txtbox">
+              <%= f.text_field :address_first, :value => @user.address1 %>
+            </div>
+            <br class="clearfloat" />
+
+            <%= f.label :address_last, "Address Line 2" %>
+            <div class="txtbox">
+              <%= f.text_field :address_last, :value => @user.address2 %>
+            </div>
+            <br class="clearfloat" />
+
+            <%= f.label :city %>
+            <div class="txtbox">
+            <%= f.text_field :city %>
+            </div>
+            <br class="clearfloat" />
+
+            <%= f.label :post_code, "Post Code *" %>
+            <div class="txtbox sz88">
+            <%= f.text_field :post_code %>
+            </div>
+            <br class="clearfloat" />
+
+            <label for="user_home_number">Primary Number*:<br /><span class="small">(This will be your account number)</span></label>
+            <div class="txtbox sz197">
+            <%= f.text_field :home_number %>
+            </div>
+            <br class="clearfloat" />
+
+            <%= f.label :mobile_number, "Mobile Number *" %>
+            <div class="txtbox sz197">
+            <%= f.text_field :mobile_number %>
+            </div>
+            <br class="clearfloat" />
+
+            <%= f.label :email, "Email *" %>
+            <div class="txtbox">
+            <%= f.text_field :email %>
+            </div>
+            <br class="clearfloat" />
+
+            <% unless current_admin_user && @user != current_user %>
+              <%= link_to 'Change Password', :controller => 'users', :action => 'change_password' %>
+            <% end %>
+              <input id="confirm" type="image" src="/images/common/confirm.jpg" />
+
+<% end -%>
+
+            <br class="clearfloat" />
+        </div>
+  </div>
+
+  <br class="clearfloat" />
+</div>
+<br class="clearfloat" />
+
+<div id="peach_bar_wrapper">
+</div>

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>Crisp Dry Cleaning &amp; Laundry</title>
+
+    <%= stylesheet_link_tag 'styles' %>
+    <%= stylesheet_link_tag 'fonts/museo500' %>
+    <%= stylesheet_link_tag 'fonts/museo700' %>
+    <%= stylesheet_link_tag 'fonts/myriadprosemiboldcondensed' %>
+
+    <!--[if IE 6]>
+	    <link href="css/ie6.css" rel="stylesheet" type="text/css" media="screen" />
+    <![endif]-->
+
+    <%= javascript_include_tag 'jquery-1.6.4.min' %>
+    <%= javascript_include_tag 'external' %>
+    <%= javascript_include_tag 'registration' %>
+    <%= javascript_include_tag 'main' %>
+
+    <!--[if IE 6]>
+      <script src="js/DD_belatedPNG_0.0.8a-min.js"></script>
+      <script src="js/DD_belatedPNG_config.js"></script>
+    <![endif]-->
+
+    <%= yield :head %>
+  </head>
+
+  <body id="registration">
+
+    <div class="main_wrapper">
+      <%= render :partial => 'shared/header'%>
+      <%= yield %>
+    </div>
+    <%= render :partial => 'shared/footer' %>
+
+    <script type="text/javascript">
+      document.write(unescape("%3Cscript src='" + ((document.location.protocol=="https:")?"https://snapabug.appspot.com":"http://www.snapengage.com") + "/snapabug.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">
+      SnapABug.addButton("e0786f57-c3bc-4776-8eba-ff17bbcbd3a2","0","55%");
+    </script>
+  </body>
+</html>

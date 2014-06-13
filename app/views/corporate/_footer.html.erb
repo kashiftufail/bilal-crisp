@@ -1,0 +1,49 @@
+<!-- Footer Holder -->
+<div id="footer-holder">
+  <div id="footer">
+    <!-- footer Contain -->     
+    <div class="fcontainer">
+      <!-- Crisp -->
+      <div class="crisp"><a href="#"><img src="<%= image_path("crisp.png") %>" width="180" height="63" alt="image" /></a></div>
+      <!-- Services -->
+      <ul class="servics">
+        <li>Services</li>
+        <li><a href="<%= price_lists_path %>">Laundry</a></li>
+        <li><a href="<%= price_lists_path %>">Dry Cleaning </a></li>
+        <li><a href="<%= price_lists_path %>">Alterations</a></li>
+        <li><a href="<%= price_lists_path %>">Ironing</a></li>
+        <li><a href="<%= price_lists_path %>">Shirt service </a></li>
+        <li><a href="<%= price_lists_path %>">Delivery</a></li>
+        <li><a href="<%= price_lists_path %>">Leather/suede</a></li>
+      </ul>
+      <!-- Follow Us -->
+      <ul class="follow-us">
+        <li>Follow Us</li>
+        <li><a class="twitter" rel="external" target="_blank" href="http://twitter.com/#!/crispcleaners">TWITTER</a></li>
+        <li><a class="facebook" rel="external" target="_blank" href="http://facebook.com/crispdrycleaning">FACEBOOK</a></li>
+      </ul>
+      <!-- Email Newsletter -->
+      <div class="email-newsletter">
+        <h3>e-mail newsletter</h3>
+        <p>Subscribe to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
+        <form class="suscribe" method="post" action="<%= subscribe_to_newsletter_path %>" >
+          <fieldset>
+            <input class="input" name="email" type="text" value="Enter your email address" />
+            <input name="suscribe" value="Suscribe" class="btn-suscrbe" type="submit" />
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <!-- Copyright -->
+    <div class="copyright">
+      <a href="#">www.crispcleaners.co.uk</a> <%= Time.now.year %>   All Rights Reserved
+    </div>
+    <!-- Bottom Links -->
+    <ul class="bottom-links">
+      <li><a href="<%= contact_path %>">Contact</a></li>
+      <li><a href="<%= media_path %>">Media</a></li>
+      <li><a href="<%= faq_path %>">FAQ</a></li>
+      <li><a href="<%= privacy_policy_path %>">Privacy Policy</a></li>
+    </ul>
+  </div>
+</div>

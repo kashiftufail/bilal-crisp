@@ -1,0 +1,51 @@
+<script>
+	
+	$(document).ready(function () {
+
+		//set the default location (fix ie 6 issue)
+		$('.lava').css({left:$('span.item:first').position()['left']});
+		
+		$('.item').click(function () {
+			//scroll the lava to current item position
+			$('.lava').stop().animate({left:$(this).position()['left']}, {duration:200});
+			
+			//scroll the panel to the correct content
+			$('.panel').stop().animate({left:$(this).position()['left'] * (-2)}, {duration:200});
+		});
+		
+	});
+	
+</script>
+<h3>Filter Orders By Date | <%= link_to "See All", :controller => 'bookings', :action => 'index' %></h3>
+<div id="moving_tab">
+	<div class="tabs">
+		<div class="lava"></div>
+		<span class="item">By Collection Date</span>
+		<span class="item">By Delivery Date</span>
+
+	</div>
+					
+	<div class="content">						
+		<div class="panel">						
+			<ul>
+				<form action="/bookings/index" method="post">
+          <%= text_field_tag 'collection_date_filter', '', :class => 'date inp-form' %>
+          <p><input type="submit" value="Filter &rarr;" /></p>
+        </form>
+			</ul>
+			<ul>
+				<form action="/bookings/index" method="post">
+          <%= text_field_tag 'delivery_date_filter', '', :class => 'date inp-form' %>
+          <p><input type="submit" value="Filter &rarr;" /></p>
+        </form>
+			</ul>						
+		</div>
+
+	</div>	
+</div>
+<%= link_to "Download Address Data", :controller => 'admin', :action => 'download_address_data', :filter => 'pickup_date', :date => params[:collection_date_filter] if params[:collection_date_filter] %>
+<%= link_to "Download Address Data", :controller => 'admin', :action => 'download_address_data', :filter => 'delivery_date', :date => params[:delivery_date_filter] if params[:delivery_date_filter] %>
+<%= link_to "Download Address Data", :controller => 'admin', :action => 'download_address_data' unless params[:collection_date_filter] || params[:delivery_date_filter] %>
+
+</body>
+</html>

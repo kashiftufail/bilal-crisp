@@ -1,0 +1,23 @@
+<table border="0" cellpadding="0" cellspacing="0"  id="items-form">
+  <tr>
+	  <th>Order Breakdown</th>
+  </tr>
+  <% @booking.items.each do |item| %>
+  <tr class="order_breakdown">
+	  <th>Item Name</th>
+	  <td><%= text_field_tag 'item[name][]', item.name, :class => 'inp-form'%></td>
+	  <th>Quantity</th>
+	  <td><%= text_field_tag 'item[quantity][]', item.quantity, :class => 'inp-form'%></td>
+	  <th>Price</th>
+	  <td><%= text_field_tag 'item[price][]', item.price, :class => 'item-price inp-form'%></td>
+  </tr>
+  <% end %>
+  <tr class="order_breakdown">
+	  <th>Item Name</th>
+	  <td><%= text_field_tag 'item[name][]', '', :class => 'inp-form'%></td>
+	  <th>Quantity</th>
+	  <td><%= text_field_tag 'item[quantity][]', '', :class => 'inp-form'%></td>
+	  <th>Price</th>
+	  <td><%= text_field_tag 'item[price][]', '', :class => 'item-price inp-form'%></td>
+  </tr>
+</table>

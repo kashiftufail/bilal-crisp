@@ -1,0 +1,1 @@
+$(function(){$('a[href][rel*=external]').each(function(i){this.target = "_blank";});});

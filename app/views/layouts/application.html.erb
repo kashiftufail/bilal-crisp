@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!--
+    <title>Crisp Dry Cleaning &amp; Laundry</title>
+    -->
+    <%= stylesheet_link_tag 'styles' %>
+    <%= stylesheet_link_tag 'fonts/museo500' %>
+    <%= stylesheet_link_tag 'fonts/museo700' %>
+    <%= stylesheet_link_tag 'fonts/myriadprosemiboldcondensed' %>
+    <%= stylesheet_link_tag 'login' %>
+
+    <!--[if IE 6]>
+	    <link href="css/ie6.css" rel="stylesheet" type="text/css" media="screen" />
+    <![endif]-->
+
+    <%= javascript_include_tag 'jquery-1.6.4.min' %>
+    <%= javascript_include_tag 'external' %>
+    <%= javascript_include_tag 'main' %>
+    <script type="text/javascript" language="javascript" charset="utf-8" src="/javascripts/login.js"></script>
+
+    <!--[if IE 6]>
+      <script src="js/DD_belatedPNG_0.0.8a-min.js"></script>
+      <script src="js/DD_belatedPNG_config.js"></script>
+    <![endif]-->
+
+    <%= yield :head %>
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28784751-1']);
+      _gaq.push(['_setDomainName', 'crispcleaners.co.uk']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
+
+     </script>
+  </head>
+
+  <body id="main">
+
+    <div class="main_wrapper">
+      <%= render :partial => 'shared/header'%>
+      <%= render :partial => 'shared/login' %>
+      <%= yield %>
+    </div>
+    <%= render :partial => 'shared/footer' %>
+
+    <script type="text/javascript">
+      document.write(unescape("%3Cscript src='" + ((document.location.protocol=="https:")?"https://snapabug.appspot.com":"http://www.snapengage.com") + "/snapabug.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">
+      SnapABug.addButton("e0786f57-c3bc-4776-8eba-ff17bbcbd3a2","0","55%");
+    </script>
+  </body>
+</html>

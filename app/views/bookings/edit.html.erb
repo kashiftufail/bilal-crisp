@@ -1,0 +1,125 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'smoothness/jquery-ui-1.8.16.custom' %>
+  <%= javascript_include_tag "jquery-ui-1.8.16.custom.min" %>
+<% end %>
+
+<!-- start content -->
+<div id="page-heading"><h1>Edit Order Details</h1></div>
+
+<%= form_for(@booking) do |f| %>
+<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
+<tr>
+	<th rowspan="3" class="sized"><img src="/images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+	<th class="topleft"></th>
+	<td id="tbl-border-top">&nbsp;</td>
+	<th class="topright"></th>
+	<th rowspan="3" class="sized"><img src="/images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+</tr>
+<tr>
+	<td id="tbl-border-left"></td>
+	<td>
+	<!--  start content-table-inner -->
+	<div id="content-table-inner">
+	
+	<table border="0" width="100%" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+	<td>
+
+		<!-- start id-form -->
+		<table border="0" cellpadding="0" cellspacing="0"  id="id-form">
+		<tr>
+			<th valign="top">Pick Up Date:</th>
+			<td><%= f.text_field :pickup_date, :value => formatted_date(@booking.pickup_date), :id => 'pickup_date', :class => 'date inp-form' %></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th valign="top">Delivery date:</th>
+			<td><%= f.text_field :delivery_date, :id => 'delivery_date', :class => 'date inp-form' %></td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+		  <th valign="top">Delivery Time:</th>
+		  <td><p class="bold">10 AM to 6 PM</p></td>
+		  <td>
+		  </td>
+	  </tr>
+	  <tr>
+		  <th valign="top">Number of Items:</th>
+		  <td><%= f.text_field :items_count, :value => @booking.items.count, :class => 'inp-form' %></td>
+		  <td>
+		  </td>
+	  </tr>
+	<tr>
+	  <th valign="top">Address Line 1 *:</th>
+	  <td><%= text_field :user, :address_1, :class => 'inp-form', :value => @user.address1 %></td>
+	  <td></td>
+	</tr>
+	<tr>
+		<th valign="top">Address Line 2:</th>
+		<td><%= text_field :user, :address_2, :class => 'inp-form', :value => @user.address2 %></td>
+		<td></td>
+	</tr>
+	<tr>
+		<th valign="top">City:</th>
+		<td><%= text_field :user, :city, :class => 'inp-form' %></td>
+	</tr>
+	<tr>
+	  <th valign="top">Post Code *:</th>
+	  <td><%= text_field :user, :post_code, :class => 'inp-form' %></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <th valign="top">Discount Code Used :</th>
+	  <td><%= @booking.discount_code %></td>
+	  <td></td>
+	</tr>
+  </table>
+  <%= render :partial => 'bookings/item_container' %>
+  <% if @discount_code %>
+    <%= hidden_field_tag 'discount', discount_value %>
+  <% end %>
+  <table border="0" cellpadding="0" cellspacing="0"  id="totals-form">
+	  <tr>
+		  <th colspan="5" width="600" align="left">Total Cost</th>
+		  <th ><input type="text" value="<%= booking_cost %>" disabled="disabled" id="total_cost" class="inp-form"></th>
+		  <th><%= hidden_field 'booking', 'cost' %></th>
+	  </tr>
+	</tr>
+	</table>
+
+	<%= link_to("Add Item","#", :id => 'new_item')%>
+  <table border="0" cellpadding="0" cellspacing="0"  id="id-form" c>
+	<tr>
+		<th>&nbsp;</th>
+		<td valign="top">
+			<input type="submit" value="" class="form-submit" />
+			<%= link_to '', bookings_path , :confirm => 'Are you sure you want to Cancel this order?', :method => :delete, :class => "form-delete", :title => "Cancal Order" %>
+		</td>
+		<td></td>
+	</tr>
+	</table>
+	<!-- end id-form  -->
+
+	</td>
+</tr>
+<tr>
+<td><img src="/images/shared/blank.gif" width="695" height="1" alt="blank" /></td>
+<td></td>
+</tr>
+</table>
+ 
+<div class="clear"></div>
+
+</div>
+<!--  end content-table-inner  -->
+</td>
+<td id="tbl-border-right"></td>
+</tr>
+<tr>
+	<th class="sized bottomleft"></th>
+	<td id="tbl-border-bottom">&nbsp;</td>
+	<th class="sized bottomright"></th>
+</tr>
+</table>
+<% end %>

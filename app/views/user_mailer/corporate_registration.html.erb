@@ -1,0 +1,29 @@
+<p>Hi <%= @user.first_name %></p>
+<br/>
+<p>Welcome to Crisp Dry Cleaning & Laundry, it’s great to have you on board!</p>
+<br/>
+<p>Here is your user name and password</p>
+<br/>
+<p>Username: <%= @user.home_number %></p> 
+<br/>
+<p>Password: <%= @password %></p>
+<br/>
+<p>To use the corporate cleaning service all you need to do is the following:</p>
+<br />
+<ol>
+  <li>Take your clenaing to the Crisp station in your office/building</li>
+  <li>Complete all of the order form ( include any preferences here)</li>
+  <li>Place your cleaning and form into the bag provided</li>
+</ol>
+<br />
+<p>We will collect/deliver your cleaning on the day/time shown at the station.</p>
+<br/>
+<p>If you ever have any problems or questions drop us an email at <%= mail_to("customerservices@crispcleaners.co.uk") %> and we’ll get right back to you.</p> 
+<br/>
+<p>Also don’t forget to follow us on twitter! <%= link_to("www.twitter.com/crispcleaners", "www.twitter.com/crispcleaners") %></p>
+<br/>
+<p>Thanks!</p>
+<br/>
+<p>Team Crisp</p>
+<br/>
+<p><a href="http://crisp.cumulus.ws"><img src="http://crisp.cumulus.ws/images/header/logo.jpg?1319001926" alt="Logo"></a></p>

@@ -1,0 +1,14 @@
+<div id="content" class="order-history">
+<div id="content_c1">
+  <h1>MY ACCOUNT</h1>
+  <%= render :partial => 'accounts/navigation'%>
+</div>
+
+    <div id="content_c2" >
+
+      <p class="prominent">Total Loyalty Points Earned: <%= @user.loyalty_points %></p>
+      <p class="prominent">Unused Loyalty Codes: <%= @user.discount_codes.loyalty_points.count %></p>
+      <p class="prominent"><%= link_to "Send Loyalty Codes", :action => 'send_loyalty_code' %></p>
+      <p id="accounts_back"><%= link_to image_tag("/images/common/back_button.jpg"), account_path %></p>
+  </div>
+</div>

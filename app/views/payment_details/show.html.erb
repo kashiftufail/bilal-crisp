@@ -1,0 +1,63 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'footer' %>
+<% end %>
+<div id="content" class="order-history payment-details admin">
+
+<div id="content_c1">
+  <h1>PAYMENT DETAILS</h1>
+  <%= render :partial => 'accounts/navigation'%>
+</div>
+
+    <div id="content_c2" >
+  <% if @payment_detail.present? %>
+<p>
+  <b>Card type:</b>
+  <%=h @payment_detail.card_type %>
+</p>
+
+<p>
+  <b>Issue date:</b>
+  <%=h @payment_detail.issue_date %>
+</p>
+
+<p>
+  <b>Card holder name:</b>
+  <%=h @payment_detail.card_holder_name %>
+</p>
+
+<p>
+  <b>Card number:</b>
+  <%=h @payment_detail.credit_card_number %>
+</p>
+
+<p>
+  <b>Expiration date:</b>
+  <%=h @payment_detail.expiration_date %>
+</p>
+
+<p>
+  <b>Security code:</b>
+  <%=h @payment_detail.security_code %>
+</p>
+
+<div id="accounts_back">
+  <%= link_to image_tag("/images/common/back_button.jpg"), account_path %>
+  <%= link_to(image_tag("common/change.jpg"), edit_payment_detail_path(@payment_detail) ) %>
+</div>
+<% elsif @pre_auth %>
+<p>
+  <b> GoCardless (Bank Account is in use)</b>
+</p>
+<div id="accounts_back">
+  <%= link_to image_tag("/images/common/back_button.jpg"), account_path %>
+  <%= link_to(image_tag("common/change.jpg"), edit_payment_detail_path(@payment_detail) ) %>
+</div>
+<% else %>
+  There are no payment details for this account
+<% end %>
+</div>
+
+</div>
+
+<div id="my_account_peach_bar_wrapper" ></div>
+

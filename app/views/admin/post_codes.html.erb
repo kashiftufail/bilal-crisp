@@ -1,0 +1,40 @@
+<div id="content">
+    <div id="content_c1">
+        <h1>USERS LIST</h1>
+    </div>
+    <br/>
+    <div id="content_c2" class="admin">
+      <br class="clearfloat" />
+
+        <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
+            <% unless @users.blank? %>
+              <tr>
+                <th class="table-header-repeat line-left minwidth-1"><a href="#">Name</a></th>
+                <th class="table-header-repeat line-left minwidth-1"><a href="#">EMAIL</a></th>
+                <th class="table-header-repeat line-left"><a href="#">CITY</a></th>
+                <th class="table-header-repeat line-left"><a href="#">POST CODE</a></th>
+                <th class="table-header-repeat line-left">ACTIONS</th>
+              </tr>
+              <% @area_codes.each do |ac| %>
+              <tr>
+                <td><%= ac.name %></td>
+                <td><%= ac.email %></td>
+                <td><%= link_to('', {:action => 'edit_area_code', :id => ac.id}, {:class => "icon-1 info-tooltip", :title => "Edit"})  %>
+                    <%= link_to '', user, :confirm => 'Are you sure you want to Remove this user?', :method => :delete, :class => "icon-2 info-tooltip", :title => "Remove" %>
+                </td>
+              </tr>
+            <% end %>
+            <% else %>
+              List Empty
+            <% end %>
+        </table>
+        <%= link_to "Add New User", new_user_path %>
+
+    </div>
+
+    <br class="clearfloat" />
+</div>
+
+<div id="peach_bar_wrapper">
+</div>
+

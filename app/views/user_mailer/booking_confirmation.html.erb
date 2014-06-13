@@ -1,0 +1,33 @@
+<br/>
+<p>Hi <%= @user.first_name %></p>
+<p>Thank you for your order!</p>
+<br/>
+<p>Your order details are below:</p>
+<br/>
+<p>Your order number is: <%= @order.id %></p>
+<p>Scheduled to be collected on <%= @order.pickup_date.strftime("%a, %d %B, %Y") %> between 8 AM to 10 PM</p>
+<p>To be delivered on <%= @order.delivery_date.strftime("%a, %d %B, %Y") %> between 8 AM to 10 PM</p>
+<br/>
+<p>We will be collecting and delivery from the following address:</p>
+<br/>
+<p><%= "#{@user.address1}, " unless @user.address1.blank? %></p>
+        <%= "#{@user.address2}, " unless @user.address2.blank? %>
+        <%= "#{@user.city}," unless @user.city.blank? %>
+        United Kingdom<br />
+        <%= @user.post_code %></p>
+<br/>
+<p>What to do </p>
+<p>Please make sure that all garments are placed into a suitable bag, if there is more than one bag please ensure they are together when the collection is being made. </p>
+<p>If you their are alterations in your order we would kindly appreciate it if you would place these in a separate bag with a note inside indicating the repair required. </p>
+<br/>
+<p>Amend Order collection date</p>
+<p>If you need to amend any detail of your order: collection date, address or to cancel please contact us at the following email address with your order details.</p>
+<br/>
+<p>Email: customerservices@crispcleaners.co.uk</p>
+<br/>
+<p>We’ll see you soon!</p>
+<br/>
+<p>Team Crisp</p>
+<br/>
+<p><a href="http://crisp.cumulus.ws"><img src="http://crisp.cumulus.ws/images/header/logo.jpg?1319001926" alt="Logo"></a></p>
+

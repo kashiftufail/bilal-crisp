@@ -1,0 +1,23 @@
+<div class="float_right"><%= (page_entries_info @bookings).html_safe %></div>
+<table class="index_table">
+  <tr>
+    <th>ORDER #</th>
+    <th>ORDER DATE </th>
+    <th>ORDER DUE</th>
+    <th>ITEMS</th>
+    <th>STATUS</th>
+    <th>COST</th>
+  </tr>
+  <% status = {"Pending" => "warning", "Dispatched" => "ok"} %>
+  <% @bookings.each do |booking| %>
+    <tr data-link="<%= admin_order_management_path(booking) %>" class="clickable" >
+    <td><%= booking.id %></td>
+    <td><%= booking.pickup_date %></td>
+    <td><%= booking.delivery_date%></td>
+    <td><%= booking.items_count.to_i%></td>
+    <%  status_class = status[booking.status] ? status[booking.status] : " error" %>
+    <td><%= content_tag(:span, booking.status, :class => "status #{status_class}") %></td>
+    <td><%= number_to_currency(booking.cost.to_f, :unit => "&pound;") %></td>
+  <% end %>
+</table>
+<div class="float_right"><%= paginate @bookings %></div>

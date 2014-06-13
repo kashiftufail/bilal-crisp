@@ -1,0 +1,27 @@
+div.float_right {
+}
+
+
+
+span.money {
+  float: right;
+}
+
+.hello {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+form > fieldset > ol > fieldset > ol > fieldset > ol{
+  margin-left: 20px;
+}
+
+form > fieldset > ol > fieldset > ol > fieldset > ol > li {
+  width: 25%;
+  float: left;
+}
+
+form > fieldset > ol > fieldset > ol > fieldset > ol > li.last_element {
+  width: 10%;
+  margin-top: 20px;
+}

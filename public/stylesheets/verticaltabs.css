@@ -1,0 +1,79 @@
+@charset "utf-8";
+
+/* Container */
+
+/* Tabs */
+
+/* Contents */
+.verticalslider_contents{float: left;width: 500px;display: inline; margin: 0px; padding: 0px;}
+.verticalslider_contents li{margin: 0px; padding: 0px;width: 500px;overflow: hidden; padding: 0px;display: none;position: absolute;list-style-type: none; min-height:500px; }
+.verticalslider_contents li p{ padding: 0px;color: #333333; }
+.verticalslider_contents .activeContent{display: inline;}
+
+/* Play Pause*/
+.verticalslider .playPause a{display:block;width: 60px;height: 60px;position:absolute;z-index:50;}
+.verticalslider .play a:link,.verticalslider .play a:visited{background: url(../images/plays.png) no-repeat 0 0;display: none;}
+.verticalslider .pause a:link,.verticalslider .pause a:visited{background: url(../images/pauses.png) no-repeat 0 0;}	
+.verticalslider .pause a:hover,.verticalslider .pause a:active,.verticalslider .play a:hover,.verticalslider  .play a:active{background-position:0px -60px;border-bottom: none;}
+
+/* Float Right Styles 
+.verticalslider_tabs {float: right;}
+.verticalslider .arrow {margin-left: -27px; background: url(../images/arrow-right.png); }
+.verticalslider_tabs a:link, .verticalslider_tabs a:visited{border-left: 1px solid #666666; border-right: none;}
+.verticalslider_tabs .activeTab a:link, .verticalslider_tabs .activeTab a:visited{border-left: 1px solid #ffffff;}
+.verticalslider_tabs .activeTab a:hover, .verticalslider_tabs .activeTab a:active{border-left: 1px solid #ffffff;}*/
+
+.verticalslider ul {
+	width: 190px;
+	margin: 0px auto;
+}
+.verticalslider ul li {
+	margin: 0px;
+	padding: 0px 0px 0.5px 0px;
+	list-style-type: none;	
+	background: none;
+}
+.verticalslider ul li a {
+	width: 190px;
+	height: 29px;
+	padding-left: 12px;
+	display: block;
+	text-align: left;
+	line-height: 0px;
+	text-decoration: none;
+	color: #FFF;
+	line-height: 29px;
+	background: url(/images/common/vertical-tabs-btn.jpg) no-repeat 0px 0px;
+	font-size:12px;
+	margin:5px 0;
+}
+.activeTab a{
+  background: url(/images/common/vertical-tabs-btn.jpg) no-repeat 0px -30px !important;
+  background-position: 0px -30px;
+}
+.verticalslider ul li a:hover {
+	color: #FFF;
+	background-position: 0px -30px;
+}
+
+.verticalslider, .verticalslider_tabs{
+  float:left;
+  padding: 0 10px 0 25px;
+  clear:both;
+}
+
+.verticalslider_tabs a{
+  font:15px 'Museo700', Arial, sans-serif;
+}
+
+.verticalslider_contents .activeContent {
+	width: 615px;
+	padding-left: 32px;
+	float: left;
+	position: relative;
+	font-weight:normal;
+	height:auto !important;
+}
+.arrow{
+  display:none;
+}

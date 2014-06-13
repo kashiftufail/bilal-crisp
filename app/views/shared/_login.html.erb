@@ -1,0 +1,21 @@
+<div id="loginContainer">
+  <div style="clear:both"></div>
+  <div id="loginBox">
+    <a onclick='document.getElementById("loginBox").style.display = "none"' id="close_login" href="#" style="position: absolute; left: 260px; top: 18px;"><%= image_tag("close.png")%></a>
+    <%= render :partial => 'shared/login_form' %>
+    <a id="forgot_password" href="#" >Forgot Password</a>
+    
+
+    <div id="forgot_password_form" >
+      <%= form_tag({:controller=> 'main', :action => 'forgot_password' }, { :id => 'login_form' } ) do %>
+        <%= label :user, :email, "Please enter your email address" %>
+        <div class="txtbox">
+          <%= text_field_tag "email", "" %>
+        </div>
+        <%= submit_tag 'Send Email', :id => "login_submit" %>
+      <% end %>
+    </div>
+
+  </div>
+
+</div>

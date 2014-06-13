@@ -1,0 +1,178 @@
+`<% content_for :head do %>
+<script type="text/javascript" src="/javascripts/jquery.js"></script>
+<script type="text/javascript" src="/javascripts/verticaltabs.pack.js"></script>
+<link rel="stylesheet" href="/stylesheets/verticaltabs.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+<script type="text/javascript">
+	$(document).ready(function(){
+		vertical_tabs = $("#vertical_content").verticaltabs({speed: 0,slideShow: false, activeIndex: 0});
+	});
+</script>
+<% end %>
+<div id="content">
+	<div id="content_c1">
+    <h1>PRICES</h1>
+  </div>
+  <br class="clearfloat" />
+  <!-- Text Example -->
+    <div class="verticalslider" id="vertical_content">
+      <ul class="verticalslider_tabs" id="price_list_links">
+          <li><a href="#">Dry Cleaning</a></li>
+          <li><a href="#">Shirt Service</a></li>
+          <li><a href="#">Repairs/Alterations</a></li>
+          <li><a href="#">Household</a></li>
+          <li><a href="#">Laundry Service</a></li>
+      </ul>
+
+          <ul class="verticalslider_contents">
+
+            <li>
+                <p>
+                <table>
+                  <tbody>
+                    <% @dry_cleaning.price_lists.each_with_index do |pl, index| %>
+                    <% if index > 0 && index%4 == 0 %>
+                      <tr class="price-break"><td rowspan="1"></td></tr>
+                    <% end %>
+                    <tr>
+                        <td><%= pl.item_name %></td>
+                        <td class="price"><%= formatted_price(pl.price) %></td>
+                        <td><%= link_to(image_tag("/images/common/change.jpg"), edit_price_list_path(pl), :class => 'no-background') if current_admin_user %></td>
+                    </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </p>
+            </li>
+            
+            <li>
+                <% @shirts.each_with_index do |plc, index| %>
+                <p>
+                  <table>
+                    <tbody>
+                    <% unless index == 0 %>
+                      <tr class="price-break"><td rowspan="1"></td></tr>
+                    <% end %>
+                    <th><%= plc.name %></th>
+                      <% plc.price_lists.each_with_index do |pl, index| %>
+                      <% if index > 0 && index%4 == 0 %>
+                        <tr class="price-break"><td rowspan="1"></td></tr>
+                      <% end %>
+                      <tr>
+                          <td><%= pl.item_name %></td>
+                          <td class="price"><%= formatted_price(pl.price) %></td>
+                          <td class="price"><%= link_to(image_tag("/images/common/change.jpg"), edit_price_list_path(pl), :class => 'no-background') if current_admin_user %></td>
+                      </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </p>
+              <% end %>
+                  <p>
+                    <table>
+                      <tbody>
+                        <th>Ironing</th>
+                        <br/>
+                        <% @ironing.price_lists.each_with_index do |pl, index| %>
+                        <% if index > 0 && index%4 == 0 %>
+                        <tr class="price-break"><td rowspan="1"></td></tr>
+                      <% end %>
+                        <tr>
+                            <td><%= pl.item_name %></td>
+                            <td class="price"><%= formatted_price(pl.price) %></td>
+                            <td><%= link_to(image_tag("/images/common/change.jpg"), edit_price_list_path(pl), :class => 'no-background') if current_admin_user %></td>
+                        </tr>
+                        <% end %>
+                        <tr class="price-break"><td rowspan="1"></td></tr>
+                        <tr class="price-break"><td rowspan="1"></td></tr>
+                        <tr><th>All Shirts are:</th></tr>
+                        <tr><td>1. Hand Finished</td></tr>
+                        <tr><td>2. Collars & Cuffs are Pre-Treated</td></tr>
+                        <tr><td>3. Starched (if requested)</td></tr>
+                      <ol>
+                      </ol>
+                      </tbody>
+                    </table>
+                  </p>
+            </li>
+
+            <li>
+                <p>
+                <table>
+                  <tbody>
+                    <% @repairs.price_lists.each_with_index do |pl, index| %>
+                    <% if index > 0 && index%4 == 0 %>
+                      <tr class="price-break"><td rowspan="1"></td></tr>
+                    <% end %>
+                    <tr>
+                        <td><%= pl.item_name %></td>
+                        <td class="price"><%= formatted_price(pl.price) %></td>
+                        <td><%= link_to(image_tag("/images/common/change.jpg"), edit_price_list_path(pl), :class => 'no-background') if current_admin_user %></td>
+                    </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </p>
+                  <p>
+                    <table>
+                      <tbody>
+                        <th>Zip Replacement</th>
+                        <br/>
+                        <% @zip_replacement.price_lists.each_with_index do |pl, index| %>
+                          <% if index > 0 && index%4 == 0 %>
+                            <tr class="price-break"><td rowspan="1"></td></tr>
+                          <% end %>
+                          <tr>
+                              <td><%= pl.item_name %></td>
+                              <td class="price"><%= formatted_price(pl.price) %></td>
+                              <td><%= link_to(image_tag("/images/common/change.jpg"), edit_price_list_path(pl), :class => 'no-background') if current_admin_user %></td>
+                          </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
+                  </p>
+            </li>
+
+            <li>
+                <p>
+                <table>
+                  <tbody>
+                  <% @household.price_lists.each_with_index do |pl, index| %>
+                    <% if index > 0 && index%4 == 0 %>
+                      <tr class="price-break"><td rowspan="1"></td></tr>
+                    <% end %>
+                    <tr>
+                        <td><%= pl.item_name %></td>
+                        <td class="price"><%= formatted_price(pl.price) %></td>
+                        <td><%= link_to(image_tag("/images/common/change.jpg"), edit_price_list_path(pl), :class => 'no-background') if current_admin_user %></td>
+                    </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </p>
+            </li>
+
+            <li>
+                <p>
+                <table>
+                  <tbody>
+                  <% @laundry.price_lists.each_with_index do |pl, index| %>
+                    <% if index > 0 && index%4 == 0 %>
+                      <tr class="price-break"><td rowspan="1"></td></tr>
+                    <% end %>
+                    <tr>
+                        <td><%= pl.item_name %></td>
+                        <td class="price"><%= formatted_price(pl.price) %></td>
+                        <td><%= link_to(image_tag("/images/common/change.jpg"), edit_price_list_path(pl), :class => 'no-background') if current_admin_user %></td>
+                    </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </p>
+            </li>
+            <div class="admin">
+              <%= link_to("Add New Item", new_price_list_path, :class => 'no-background') if current_admin_user %>  
+            </div>
+          </ul>
+      </div> 
+  </div>
+<br class="clearfloat" />

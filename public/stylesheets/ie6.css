@@ -1,0 +1,31 @@
+#step1,
+#step2,
+#step3,
+#step4 {
+	height: 95px;
+}
+#peach_bar_wrapper {
+	height: 15px;
+}
+#service_area_check {
+	height: 33px;
+}
+#content {
+	height: 330px;
+}
+#content_c2 label {
+	height: 22px;
+}
+#my_account_c1,
+#my_account_c2 {
+	height: 185px;
+}
+#txt_newsletter,
+#txt_area_post_code,
+.date,
+.txtbox input,
+.txtarea textarea,
+.month input,
+.year input {
+	background-attachment: fixed;
+}

@@ -1,0 +1,42 @@
+<br/>
+<%= form_tag :controller => 'admin', :action => 'update_orders' do %>
+<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
+    <% unless @bookings.blank? %>
+      <tr>
+        <th class="table-header-repeat line-left minwidth-1"><%= link_to 'ORDER ID', bookings_path %></th>
+        <th class="table-header-repeat line-left minwidth-1"><%= link_to 'ORDER DATE', :controller => 'bookings', :action => 'index', :sort_by => 'pickup_date' %></th>
+        <th class="table-header-repeat line-left"><%= link_to 'ORDER DUE', :controller => 'bookings', :action => 'index', :sort_by => 'delivery_date' %></th>
+        <th class="table-header-repeat line-left"><a href="#">ORDERED BY</a></th>
+        <th class="table-header-repeat line-left"><a href="#">COST</a></th>
+        <th class="table-header-repeat line-left"><a href="#">ORDER CONFIRMED</a></th>
+        <th class="table-header-repeat line-left"><a href="#">ORDER DISPATCHED</a></th>
+        <th class="table-header-repeat line-left"><a href="#">ACTIONS</a></th>
+      </tr>
+      <% @bookings.each_with_index do |booking, index| %>
+        <tr <%= admin_class(index) %>>
+          <td><%= booking.id %></td>
+          <td><%=h booking.pickup_date.strftime("%d/%m/%y") %></td>
+          <td><%=h booking.delivery_date.strftime("%d/%m/%y") %></td>
+          <td><%=h booking.user.name unless booking.user.blank? %></td>
+          <td><%=h booking.cost %></td>
+
+          <td> <%= check_box_tag "orders_received[]", booking.id, (booking.status == "Received") ,:class => 'check_box', :disabled =>  disabled_received(booking) %> </td>
+
+          <td> <%= check_box_tag "orders_dispatched[]", booking.id, (booking.status == "Dispatched"),:class => 'check_box', :disabled =>  disabled_dispatched(booking) %> </td>
+
+          <td><%= link_to '', edit_booking_path(booking), :class => "icon-1 info-tooltip #{booking.status}", :title => "Edit"  %>
+					  <%= link_to '', booking, :confirm => 'Are you sure you want to Cancel this order?', :method => :delete, :class => "icon-2 info-tooltip", :title => "Cancel Order" %>
+					  <%= link_to '', booking, :class => "icon-3 info-tooltip", :title => "View Details" %>
+					  <%= link_to '', { :controller => 'admin', :action => 'download_notes', :id => booking.id },  { :class => "notes info-tooltip", :title => "Download Instructions" } %>
+					</td>
+        </tr>
+      <% end %>
+    <% else %>
+      You don't have any orders
+    <% end %>
+</table>
+
+<%# submit_tag 'Update Orders' %>
+<% end %>
+
+<br class="clearfloat" />

@@ -1,0 +1,104 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'jquery.jqtransform' %>
+  <%= stylesheet_link_tag 'jqtransform' %>
+  <%= render :partial => 'shared/hide_booking_button' %>
+  <style>
+    h2.gocardless {
+      text-decoration: underline;
+    }
+  </style>
+  <script type="text/javascript" language="javascript" charset="utf-8">
+    $('document').ready(function(){
+      $('.fieldWithErrors input').parent().after("<span class='error-small-payment' style='color:red;'>Required</span>");
+      $('.fieldWithErrors .jqTransformSelectWrapper').parent().append("<span class='error-small-payment' style='color:red;'>Required</span>");
+    });
+  </script>
+<% end %>
+<div id="content">
+  <div id="content_c1">
+    <h1>PAYMENT DETAILS</h1>
+  </div>
+
+    <div id="content_c2">
+    <div id="payment_details">
+      <%
+        options = {
+          :amount => "150.00",
+          :name => "Laundry cost",
+          :interval_unit => "month",
+          :interval_length => 1
+        }
+      %>
+      <h2 class="gocardless">
+        <% if current_user.has_valid_pre? && @booking.present? %>
+          <%= link_to(image_tag("gocardless.png"), "/main/confirmation?go=true") %>
+        <% elsif current_user.pre_authorization %>
+          <%= link_to(image_tag("gocardless.png"), GoCardless.new_pre_authorization_url(options)) %>
+        <% else %>
+          <%= link_to(image_tag("gocardless.png"), GoCardless.new_pre_authorization_url(options)) %>
+        <% end %>
+    </h2>
+      <br />
+      <h2>Or</h2>
+      <br />
+      <h2>Pay via Credit/Debit Card</h2>
+    <%= form_for(@payment_detail) do |f| %>
+
+        <%= f.label :card_type %>
+        <%= f.select :card_type, [["Mastercard","Mastercard"],["VISA","VISA"], ["Visa Debit","Visa Debit"], ["Maestro","Maestro"]], :include_blank => "Choose One" %>
+        <br class="clearfloat" />
+
+        <%= f.label :credit_card_number, "Card Number" %>
+        <div class="txtbox sz138">
+        <%= f.text_field :credit_card_number %>
+        </div>
+        <br class="clearfloat" />
+
+        <%= f.label :issue_date %>
+        <%= f.date_select :issue_date, :discard_day => true, :order => [:month, :year] %>
+        <br class="clearfloat" />
+
+        <%= f.label :expiration_date %>
+        <%= f.date_select :expiration_date, :discard_day => true, :order => [:month, :year] %>
+        <br class="clearfloat" />
+
+        <div class="txtbox">
+        </div>
+
+        <%= f.label :security_code %>
+        <div class="txtbox sz138">
+        <%= f.text_field :security_code %>
+        </div>
+        <br class="clearfloat" />
+
+        <%= f.label :card_holder_name, "Name of card holder" %>
+        <div class="txtbox sz138">
+        <%= f.text_field :card_holder_name %>
+        </div>
+        <br class="clearfloat" />
+
+        <br class="clearfloat" />
+        <%= f.label :special_instructions, "Please enter any special requests, comments for your order below. (i.e: shirts folded, starched, alterations etc...)", :id => 'payment_details_special_instructions' %>
+        <br class="clearfloat" />
+        <div class="txtarea">
+          <%= f.text_area :special_instructions %>
+        </div>
+        <%= hidden_field_tag 'redirected', params[:redirected] || false %>
+        <br class="clearfloat" />
+
+        <% if params[:redirected] %>
+          <div id="payment_details_links">
+            <%= link_to image_tag("common/back_button.jpg"), new_booking_path %>
+            <input type="image" src="/images/common/next-step.jpg" id="next_step"/>
+          </div>
+        <% else %>
+          <input id="next_step" type="image" src="/images/common/confirm.jpg" />
+        <% end %>
+        </div>
+
+    <% end %>
+    <%= render :partial => 'payment_details/instructions' %>
+    </div>
+    <br class="clearfloat" />
+  </div>
+</div>
