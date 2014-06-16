@@ -1,3 +1,7 @@
+<%= stylesheet_link_tag 'default' %>
+<%= stylesheet_link_tag 'nivo-slider' %>
+<%= javascript_include_tag 'jquery.nivo.slider' %>
+
 <% content_for :head do %>
   <%= render :partial => 'shared/hide_booking_button' %>
   <title>Crisp Dry Cleaning & Laundry: London’s Online Dry Cleaning Collection & Delivery Service</title>
@@ -6,6 +10,57 @@
   <meta name="keywords" content="dry cleaners in london, laundry service, london dry cleaners, shirt service, shirt laundry,  alterations, household laundry , wash & fold service, dry cleaning delivery, dry cleaning at home, dry cleaning at office, dry cleaning pick up and delivery, cheap dry cleaning" />
 <% end %> 
 
+
+
+
+<div class="content"><!--Content Start-->
+  <div class="container"><!--Container Start-->
+    <div class="bnr"><!--Banner Start-->
+      <!--<img src="images/bg-bnr.jpg" alt="" />-->
+      <div class="theme-default">
+        <div id="slider" class="nivoSlider">
+          <img src="/images/dry-cleaned.jpg" data-thumb="/images/dry-cleaned.jpg" alt=""/>
+          <img src="/images/shirts-laundered.jpg" data-thumb="/images/shirts-laundered.jpg" alt=""/>
+          <img src="/images/duvet-laundered.jpg" data-thumb="/images/duvet-laundered.jpg" alt="" data-transition="slideInLeft"/>
+        </div>
+      </div>
+    </div>
+    <!--Banner End-->
+    <div class="clr">&nbsp;</div>
+    <!--<div class="btn-booking">-->
+      <!--<a href="#">We Will Be Taking bookings soon....</a>-->
+    <!--</div>-->
+    <!--<div class="clr">&nbsp;</div>-->
+    <!--<div class="service-area">-->
+      <!--<div class="service">-->
+        <!--SERVICE AREA CHECKER-->
+        <!--<input type="email" name=""><input type="submit" name="" value="Go">-->
+      <!--</div>-->
+      <!--<div class="delivery">-->
+        <!--FREE PICKUP AND DELIVERY-->
+        <!--<p>Minimum <br/>order £15</p>-->
+      <!--</div>-->
+      <!--<div class="qualty">-->
+        <!--QUALITY &amp; CONVENIENCE-->
+        <!--<p>on Your <br/>Doorstep</p>-->
+      <!--</div>-->
+      <!--<div class="loyalty">-->
+        <!--COLLECT LOYALTY POINTS-->
+        <!--<p>redeem with money off coupons</p>-->
+      <!--</div>-->
+      <!--<div class="clr">&nbsp;</div>-->
+    </div>
+  </div>
+  <!--Container End-->
+<!--</div>-->
+<!--Content End-->
+
+
+<script type="text/javascript">
+    $(window).load(function () {
+        $('#slider').nivoSlider();
+    });
+</script>
 
 
 
@@ -38,7 +93,7 @@
 
   <div id="book_a_collection">
 
-    <%= link_to(image_tag("button.png"), "#")%>
+    <%= link_to(image_tag("button.png"), "http://crispcleaners.co.uk/admin/login")%>
   </div>
 </div>
 
@@ -78,3 +133,22 @@
     <br class="clearfloat" />
   </div>
 </div>
+
+
+
+<style type="text/css">
+    .clr{
+    	clear:both;
+    	height:0;
+    	}
+    .container{
+    	 width:1000px;
+    	 margin:auto;
+    	}
+    .content{
+    	 margin:0 auto;
+    	}
+    .bnr{
+    	margin-top:55px;
+    	}
+</style>
